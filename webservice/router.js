@@ -30,7 +30,21 @@ async function searchMovies(searchParam) {
 
     try {
         const response = await axios.get(urlString, options);
-        return response.data;
+        let movieResponse = [];
+        const imageUrlPrefix = "https://image.tmdb.org/t/p/original";
+        for (let i = 0; i < 10; i++) {
+            const movie = response.data.results[i];
+            const popSum = `${movie.popularity} out of ${movie.vote_count}`;
+
+            movieResponse.push({
+                movie_id: movie.id,
+                title: movie.title,
+                poster_image_url: imageUrlPrefix + movie.poster_path,
+                popularity_summary: popSum
+            });
+        }
+
+        return movieResponse;
     } catch (error) {
         console.log(error);
         return false;
