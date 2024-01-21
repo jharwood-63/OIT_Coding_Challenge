@@ -25,9 +25,11 @@ async function getMovies(searchParam: string) {
 
   try {
     const response = await axios.get(url);
-    console.log(response);
+
+    return response.data;
   } catch (error: any) {
     console.log(error);
+    return null;
   }
 }
 
