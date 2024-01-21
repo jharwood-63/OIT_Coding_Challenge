@@ -33,10 +33,15 @@ async function searchMovies(searchParam) {
 
     try {
         const response = await axios.get(urlString, options);
+        // console.log(response.data.results);
         let movieResponse = [];
         const imageUrlPrefix = "https://image.tmdb.org/t/p/original";
         for (let i = 0; i < 10; i++) {
+            if (i > response.data.results.length-1) {
+                break;
+            }
             const movie = response.data.results[i];
+            console.log('movie ', i, movie)
             const popSum = `${movie.popularity} out of ${movie.vote_count}`;
 
             movieResponse.push({
