@@ -16,3 +16,7 @@ Next you can type npm run dev to start the front end.
 
 Enter a movie title in the search bar and click search. I was unable to get the data to display in the table but
 if you open the console (ctrl+shift+i for windows and then click console) you will see that the movie data is returned in the correct format.
+
+Future Improvements
+
+If I had more time I would first figure out how to get the table to refresh when new data was received. Then I would make the rows of the table clickable. When a row is selected a pop up comes up and shows the poster image and other data about each movie.
