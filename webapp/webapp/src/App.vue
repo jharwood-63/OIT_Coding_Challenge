@@ -18,9 +18,9 @@
 
 <script lang="ts" setup>
 import {getMovies} from "@/main";
-
-let search: string = '';
-let movies: Array<any> = [];
+import {ref} from "vue"
+let search = '';
+let movies = ref([]);
 let errorMessage: string = '';
 let isError: boolean = false;
 
@@ -32,14 +32,11 @@ let isError: boolean = false;
     }
     const response = await getMovies(search);
     if (response != null) {
-      movies = response;
-      console.log(movies);
-      // I know I am getting the movies back I just can't display them
+      movies.value = response;
     } else {
       errorMessage = 'Unable to search movies';
       isError = true;
     }
-
   }
 </script>
 
