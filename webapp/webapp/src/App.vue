@@ -19,18 +19,19 @@
 <script lang="ts" setup>
 import {getMovies} from "@/main";
 import {ref} from "vue"
-let search = '';
+let search = ref('');
 let movies = ref([]);
 let errorMessage: string = '';
 let isError: boolean = false;
 
   async function searchMovies() {
-    console.log(search);
-    if (search === '') {
+    console.log(search.value);
+    if (search.value === '') {
       alert('Please enter a movie title');
       return;
     }
-    const response = await getMovies(search);
+    const response = await getMovies(search.value);
+    search.value = '';
     if (response != null) {
       movies.value = response;
     } else {
